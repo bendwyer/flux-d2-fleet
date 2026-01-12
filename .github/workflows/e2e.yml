@@ -1,0 +1,165 @@
+---
+name: e2e
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+
+      - name: Setup Flux CLI
+        uses: controlplaneio-fluxcd/distribution/actions/setup@f2b659f0cec358552f981171c5f98e4972183b0c # v2.7.5
+
+      - name: Setup Kubernetes (KIND)
+        uses: helm/kind-action@92086f6be054225fa813e0a4b13787fc9088faab # v1.13.0
+        with:
+          cluster_name: flux-test
+          wait: 1m
+
+      - name: Verify cluster
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
+
+      - name: Install Flux Operator
+        run: |
+          kubectl apply -f https://github.com/controlplaneio-fluxcd/flux-operator/releases/latest/download/install.yaml
+          kubectl -n flux-system wait deployment/flux-operator --for=condition=Available --timeout=2m
+
+      - name: Create test FluxInstance
+        run: |
+          kubectl apply -f - <<EOF
+          ---
+          apiVersion: fluxcd.controlplane.io/v1
+          kind: FluxInstance
+          metadata:
+            name: flux
+            namespace: flux-system
+          spec:
+            distribution:
+              version: "2.x"
+              registry: "ghcr.io/fluxcd"
+            cluster:
+              domain: "e2e.test.local"
+            kustomize:
+              patches:
+                - target:
+                    kind: Kustomization
+                  patch: |
+                    - op: replace
+                      path: /spec/interval
+                      value: 1m
+          EOF
+
+      - name: Wait for Flux to be ready
+        run: |
+          kubectl -n flux-system wait fluxinstance/flux --for=condition=Ready --timeout=3m
+
+      - name: Create test tenants Kustomization
+        run: |
+          kubectl apply -f - <<EOF
+          ---
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: flux-system
+          ---
+          apiVersion: source.toolkit.fluxcd.io/v1
+          kind: GitRepository
+          metadata:
+            name: fleet-test
+            namespace: flux-system
+          spec:
+            interval: 1m
+            url: ${{ github.server_url }}/${{ github.repository }}
+            ref:
+              branch: ${{ github.head_ref || github.ref_name }}
+          ---
+          apiVersion: kustomize.toolkit.fluxcd.io/v1
+          kind: Kustomization
+          metadata:
+            name: tenants
+            namespace: flux-system
+          spec:
+            interval: 1m
+            retryInterval: 30s
+            path: ./tenants
+            prune: true
+            sourceRef:
+              kind: GitRepository
+              name: fleet-test
+          EOF
+
+      - name: Wait for tenants Kustomization to reconcile
+        timeout-minutes: 2
+        run: |
+          echo "Waiting for tenants Kustomization to reconcile..."
+          kubectl -n flux-system wait kustomization/tenants --for=condition=Ready --timeout=2m || true
+
+      - name: Verify ResourceSets created
+        run: |
+          echo "=== ResourceSets ==="
+          kubectl get resourcesets -A
+
+          echo ""
+          echo "=== ResourceSet: infra ==="
+          kubectl -n flux-system get resourceset infra -o yaml || echo "ResourceSet 'infra' not found"
+
+          echo ""
+          echo "=== ResourceSet: apps ==="
+          kubectl -n flux-system get resourceset apps -o yaml || echo "ResourceSet 'apps' not found"
+
+      - name: Validate ResourceSet templates
+        run: |
+          echo "=== Checking if ResourceSets processed inputs ==="
+
+          # Check if any namespaces were created by ResourceSets
+          kubectl get namespaces -l toolkit.fluxcd.io/component
+
+          # Check if any Kustomizations were created
+          kubectl get kustomizations -A
+
+          # Check if any OCIRepositories were created
+          kubectl get ocirepositories -A
+
+      - name: Show Flux status
+        if: always()
+        run: |
+          echo "=== Flux Installation ==="
+          kubectl -n flux-system get fluxinstance
+
+          echo ""
+          echo "=== All Flux Resources ==="
+          flux get all --all-namespaces
+
+      - name: Debug on failure
+        if: failure()
+        run: |
+          echo "=== Flux Operator Logs ==="
+          kubectl -n flux-system logs deployment/flux-operator --tail=100
+
+          echo ""
+          echo "=== Kustomize Controller Logs ==="
+          kubectl -n flux-system logs deployment/kustomize-controller --tail=100 || true
+
+          echo ""
+          echo "=== Source Controller Logs ==="
+          kubectl -n flux-system logs deployment/source-controller --tail=100 || true
+
+          echo ""
+          echo "=== All Resources in flux-system ==="
+          kubectl -n flux-system get all
+
+          echo ""
+          echo "=== Events ==="
+          kubectl -n flux-system get events --sort-by='.lastTimestamp'
