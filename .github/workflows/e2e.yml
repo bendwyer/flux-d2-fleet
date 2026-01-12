@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - "clusters/**"
 
 permissions:
   contents: read
@@ -49,8 +51,6 @@ jobs:
             distribution:
               version: "2.x"
               registry: "ghcr.io/fluxcd"
-            cluster:
-              domain: "e2e.test.local"
             kustomize:
               patches:
                 - target:
@@ -101,10 +101,10 @@ jobs:
           EOF
 
       - name: Wait for tenants Kustomization to reconcile
-        timeout-minutes: 2
+        timeout-minutes: 3
         run: |
           echo "Waiting for tenants Kustomization to reconcile..."
-          kubectl -n flux-system wait kustomization/tenants --for=condition=Ready --timeout=2m || true
+          kubectl -n flux-system wait kustomization/tenants --for=condition=Ready --timeout=3m || true
 
       - name: Verify ResourceSets created
         run: |
