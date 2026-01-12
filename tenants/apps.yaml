@@ -1,0 +1,69 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/CustomResourceDefinition/catalog/refs/heads/main/schema/fluxcd.controlplane.io/resourceset_v1.json
+apiVersion: fluxcd.controlplane.io/v1
+kind: ResourceSet
+metadata:
+  name: apps
+  namespace: flux-system
+  annotations:
+    templates.fluxcd.io/tenant: "apps"
+spec:
+  dependsOn:
+    - apiVersion: kustomize.toolkit.fluxcd.io/v1
+      kind: Kustomization
+      name: cert-manager-configs
+      namespace: cert-manager
+      ready: true
+      readyExpr: status.observedGeneration >= 0
+    - apiVersion: kustomize.toolkit.fluxcd.io/v1
+      kind: Kustomization
+      name: onepassword-controllers
+      namespace: onepassword
+      ready: true
+      readyExpr: status.observedGeneration >= 0
+  inputs:
+    # Omni application on omni cluster
+    - component: "omni"
+      tag: "latest"
+      environment: "omni"
+
+  resources:
+    # Create namespace for each application
+    - apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: << inputs.component >>
+        labels:
+          toolkit.fluxcd.io/component: << inputs.component >>
+
+    # Create OCIRepository source for each application
+    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+      kind: OCIRepository
+      metadata:
+        name: apps
+        namespace: << inputs.component >>
+      spec:
+        url: "oci://ghcr.io/bendwyer/d2-apps/<< inputs.component >>"
+        ref:
+          tag: << inputs.tag >>
+        interval: 5m
+
+    # Apply application manifests
+    - apiVersion: kustomize.toolkit.fluxcd.io/v1
+      kind: Kustomization
+      metadata:
+        name: << inputs.component >>
+        namespace: << inputs.component >>
+      spec:
+        sourceRef:
+          kind: OCIRepository
+          name: apps
+        path: ./<< inputs.environment >>
+        prune: true
+        interval: 10m
+        postBuild:
+          substituteFrom:
+            - kind: ConfigMap
+              name: << inputs.component >>-vars  # Non-sensitive configuration
+            - kind: Secret
+              name: << inputs.component >>  # Created by OnePasswordItem CRDs
