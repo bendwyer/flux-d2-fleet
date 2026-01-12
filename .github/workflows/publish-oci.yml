@@ -8,11 +8,13 @@ on:
       - main
     paths:
       - "clusters/**"
+      - "tenants/**"
   push:
     branches:
       - main
     paths:
-      - "clusters/**"      
+      - "clusters/**"
+      - "tenants/**"
 
 permissions:
   contents: read
