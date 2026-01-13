@@ -67,4 +67,5 @@ spec:
         interval: 10m
         dependsOn:
           - name: << inputs.component >>-controllers
-          - name: onepassword-controllers  # Ensure operator is ready for OnePasswordItem CRDs
+          - name: onepassword-controllers
+            namespace: onepassword  # Ensure operator is ready for OnePasswordItem CRDs
