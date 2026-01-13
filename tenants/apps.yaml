@@ -28,14 +28,6 @@ spec:
       environment: "omni"
 
   resources:
-    # Create namespace for each application
-    - apiVersion: v1
-      kind: Namespace
-      metadata:
-        name: << inputs.component >>
-        labels:
-          toolkit.fluxcd.io/component: << inputs.component >>
-
     # Create OCIRepository source for each application
     - apiVersion: source.toolkit.fluxcd.io/v1beta2
       kind: OCIRepository
