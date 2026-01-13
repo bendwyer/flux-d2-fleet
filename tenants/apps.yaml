@@ -48,23 +48,7 @@ spec:
           tag: << inputs.tag >>
         interval: 5m
 
-    # Create secrets (OnePasswordItems) and wait for them to be ready
-    - apiVersion: kustomize.toolkit.fluxcd.io/v1
-      kind: Kustomization
-      metadata:
-        name: << inputs.component >>-secrets
-        namespace: << inputs.component >>
-      spec:
-        sourceRef:
-          kind: OCIRepository
-          name: apps
-        path: ./<< inputs.environment >>
-        prune: true
-        interval: 10m
-        wait: true  # Wait for OnePasswordItems to create secrets
-        timeout: 5m
-
-    # Apply application manifests (depends on secrets being ready)
+    # Apply application manifests
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
       metadata:
@@ -75,12 +59,11 @@ spec:
           kind: OCIRepository
           name: apps
         path: ./<< inputs.environment >>
-        prune: false  # Don't prune since -secrets Kustomization manages some resources
+        prune: true
         interval: 10m
-        dependsOn:
-          - name: << inputs.component >>-secrets
+        retryInterval: 1m  # Retry faster when OnePasswordItems are being created
         postBuild:
           substituteFrom:
             - kind: Secret
               name: << inputs.component >>
-              optional: true  # Apps without secrets won't have this
+              optional: true  # First run: creates OnePasswordItem, second run: uses secret
