@@ -10,7 +10,7 @@ spec:
     version: "2.x"
     registry: "ghcr.io/fluxcd"
   cluster:
-    domain: "omni.bendwyer.cloud"
+    domain: cluster.local
   sync:
     kind: OCIRepository
     url: "oci://ghcr.io/bendwyer/d2-fleet"
