@@ -26,6 +26,11 @@ spec:
     - component: "omni"
       tag: "latest"
       environment: "omni"
+    # Flux Web UI exposed via Sidero Omni workload proxy
+    - component: "flux-webui"
+      tag: "latest"
+      environment: "omni"
+      createNamespace: "disabled"
 
   resources:
     # Create namespace (app can add labels via its manifests)
@@ -33,6 +38,8 @@ spec:
       kind: Namespace
       metadata:
         name: << inputs.component >>
+        annotations:
+          fluxcd.controlplane.io/reconcile: << get inputs "createNamespace" | default "enabled" >>
 
     # Create OCIRepository source for each application
     - apiVersion: source.toolkit.fluxcd.io/v1beta2
