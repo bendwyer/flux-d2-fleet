@@ -42,7 +42,7 @@ flux-d2-fleet/
     ---
     cluster:
       extraManifests:
-        - "https://github.com/fluxcd/flux2/releases/latest/download/install.yaml"
+         - https://github.com/controlplaneio-fluxcd/flux-operator/releases/latest/download/install.yaml
    ```
 
 2. 1Password bootstrap credentials added to Talos nodes:
