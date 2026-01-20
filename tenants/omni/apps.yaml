@@ -22,7 +22,7 @@ spec:
       ready: true
       readyExpr: status.observedGeneration >= 0
   inputs:
-    # Omni application on omni cluster
+    # add apps below
     - component: "omni"
       tag: "latest"
       environment: "omni"

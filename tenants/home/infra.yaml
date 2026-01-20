@@ -9,12 +9,14 @@ metadata:
     templates.fluxcd.io/tenant: "infra"
 spec:
   inputs:
+    # add infra below
     - component: "onepassword"
       tag: "latest"
-      environment: "omni"
-    - component: "cert-manager"
-      tag: "latest"
-      environment: "omni"
+      environment: "home"
+    # Add cert-manager when home environment is created in flux-d2-infra
+    # - component: "cert-manager"
+    #   tag: "latest"
+    #   environment: "home"
 
   resources:
     # Create namespace for each component

@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - "clusters/**"
+      - "tenants/**"
 
 permissions:
   contents: read
@@ -88,23 +89,40 @@ jobs:
           apiVersion: kustomize.toolkit.fluxcd.io/v1
           kind: Kustomization
           metadata:
-            name: tenants
+            name: tenants-omni
             namespace: flux-system
           spec:
             interval: 1m
             retryInterval: 30s
-            path: ./tenants
+            path: ./tenants/omni
+            prune: true
+            sourceRef:
+              kind: GitRepository
+              name: fleet-test
+          ---
+          apiVersion: kustomize.toolkit.fluxcd.io/v1
+          kind: Kustomization
+          metadata:
+            name: tenants-home
+            namespace: flux-system
+          spec:
+            interval: 1m
+            retryInterval: 30s
+            path: ./tenants/home
             prune: true
             sourceRef:
               kind: GitRepository
               name: fleet-test
           EOF
 
-      - name: Wait for tenants Kustomization to reconcile
+      - name: Wait for tenants Kustomizations to reconcile
         timeout-minutes: 3
         run: |
-          echo "Waiting for tenants Kustomization to reconcile..."
-          kubectl -n flux-system wait kustomization/tenants --for=condition=Ready --timeout=3m || true
+          echo "Waiting for tenants-omni Kustomization to reconcile..."
+          kubectl -n flux-system wait kustomization/tenants-omni --for=condition=Ready --timeout=3m || true
+
+          echo "Waiting for tenants-home Kustomization to reconcile..."
+          kubectl -n flux-system wait kustomization/tenants-home --for=condition=Ready --timeout=3m || true
 
       - name: Verify ResourceSets created
         run: |
