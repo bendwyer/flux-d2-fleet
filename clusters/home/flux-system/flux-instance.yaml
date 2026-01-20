@@ -1,0 +1,18 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/CustomResourceDefinition/catalog/refs/heads/main/schema/fluxcd.controlplane.io/fluxinstance_v1.json
+apiVersion: fluxcd.controlplane.io/v1
+kind: FluxInstance
+metadata:
+  name: flux
+  namespace: flux-system
+spec:
+  distribution:
+    version: "2.x"
+    registry: "ghcr.io/fluxcd"
+  cluster:
+    domain: cluster.local
+  sync:
+    kind: OCIRepository
+    url: "oci://ghcr.io/bendwyer/d2-fleet"
+    ref: "latest"
+    path: "clusters/home"
