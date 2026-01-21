@@ -23,11 +23,13 @@ flux-d2-fleet/
 │   ├── {cluster}/
 │   │   ├── flux-system/
 │   │   │   └── flux-instance.yaml      # Flux Operator bootstrap
-│   │   └── tenants.yaml                # References tenants/ directory
+│   │   └── tenants.yaml                # References tenants/{cluster} directory
 │   └── ...
-├── tenants/                            # ResourceSets
-│   ├── infra.yaml                      # Infrastructure (1Password, cert-manager, etc.)
-│   └── apps.yaml                       # Application deployments
+├── tenants/                            # Per-cluster ResourceSets
+│   ├── {cluster}/
+│   │   ├── apps.yaml                   # Application deployments
+│   │   └── infra.yaml                  # Infrastructure deployments
+│   └── ...
 └── .github/workflows/                  # CI/CD automation
     ├── publish-oci.yml                 # OCI publishing with PR validation
     └── e2e.yml                         # E2E testing in KIND cluster
