@@ -16,6 +16,9 @@ spec:
     - component: "cert-manager"
       tag: "latest"
       environment: "omni"
+    - component: "grafana"
+      tag: "latest"
+      environment: "omni"      
 
   resources:
     # Create namespace for each component
