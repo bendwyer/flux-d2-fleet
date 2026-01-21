@@ -22,15 +22,6 @@ spec:
     - component: "kubelet-serving-cert-approver"
       tag: "latest"
       environment: "omni"
-    - component: "metrics-server"
-      tag: "latest"
-      environment: "omni"
-    - component: "vertical-pod-autoscaler"
-      tag: "latest"
-      environment: "omni"
-    - component: "goldilocks"
-      tag: "latest"
-      environment: "omni"
 
   resources:
     # Create namespace for each component
