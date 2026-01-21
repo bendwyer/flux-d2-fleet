@@ -28,6 +28,9 @@ spec:
     - component: "vertical-pod-autoscaler"
       tag: "latest"
       environment: "omni"
+    - component: "goldilocks"
+      tag: "latest"
+      environment: "omni"
 
   resources:
     # Create namespace for each component
