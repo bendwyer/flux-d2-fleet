@@ -22,6 +22,9 @@ spec:
     - component: "metrics-server"
       tag: "latest"
       environment: "home"
+    - component: "vertical-pod-autoscaler"
+      tag: "latest"
+      environment: "home"
     # Add cert-manager when home environment is created in flux-d2-infra
     # - component: "cert-manager"
     #   tag: "latest"
