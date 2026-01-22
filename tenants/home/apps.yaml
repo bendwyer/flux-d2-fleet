@@ -27,6 +27,9 @@ spec:
     - component: "flux-webui"
       tag: "latest"
       environment: "home"
+    - component: "goldilocks-webui"
+      tag: "latest"
+      environment: "home"
 
   resources:
     # Create namespace (app can add labels via its manifests)
