@@ -16,18 +16,24 @@ spec:
     - component: "longhorn"
       tag: "latest"
       environment: "home"
+      podSecurityLevel: "privileged"
     - component: "bjw-s"
       tag: "latest"
       environment: "home"
     - component: "tailscale"
       tag: "latest"
       environment: "home"
+      # PodSecurity must be set here because the ResourceSet creates the namespace
+      # before the component's Kustomization runs. ProxyGroup pods require privileged
+      # access and will fail to schedule if the label is only in the component's namespace.yaml.
+      podSecurityLevel: "privileged"
     - component: "tsidp"
       tag: "latest"
       environment: "home"
     - component: "grafana"
       tag: "latest"
       environment: "home"
+      podSecurityLevel: "privileged"
     - component: "kubelet-serving-cert-approver"
       tag: "latest"
       environment: "home"
@@ -49,6 +55,7 @@ spec:
         name: << inputs.component >>
         labels:
           toolkit.fluxcd.io/component: << inputs.component >>
+          << if inputs.podSecurityLevel >>pod-security.kubernetes.io/enforce: << inputs.podSecurityLevel >><< end >>
 
     # Create OCIRepository source for each component
     - apiVersion: source.toolkit.fluxcd.io/v1beta2
