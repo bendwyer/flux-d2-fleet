@@ -33,6 +33,9 @@ spec:
     - component: "longhorn-webui"
       tag: "latest"
       environment: "home"
+    - component: "calibre-web-automated"
+      tag: "latest"
+      environment: "home"
 
   resources:
     # Create namespace (app can add labels via its manifests)
