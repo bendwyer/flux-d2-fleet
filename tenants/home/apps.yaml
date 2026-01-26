@@ -36,6 +36,9 @@ spec:
     - component: "calibre-web-automated"
       tag: "latest"
       environment: "home"
+    - component: "kavita"
+      tag: "latest"
+      environment: "home"
 
   resources:
     # Create namespace (app can add labels via its manifests)
