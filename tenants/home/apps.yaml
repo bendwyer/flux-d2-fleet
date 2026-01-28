@@ -33,10 +33,7 @@ spec:
     - component: "longhorn-webui"
       tag: "latest"
       environment: "home"
-    - component: "calibre-web-automated"
-      tag: "latest"
-      environment: "home"
-    - component: "kavita"
+    - component: "books"
       tag: "latest"
       environment: "home"
 
