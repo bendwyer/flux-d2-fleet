@@ -19,15 +19,20 @@ spec:
     - component: "grafana"
       tag: "latest"
       environment: "omni"
+      podSecurityLevel: "privileged"
 
   resources:
     # Create namespace for each component
+    # PodSecurity must be set here because the ResourceSet creates the namespace
+    # before the component's Kustomization runs. Pods that require privileged
+    # access and will fail to schedule if the label is only in the component's namespace.yaml.
     - apiVersion: v1
       kind: Namespace
       metadata:
         name: << inputs.component >>
         labels:
           toolkit.fluxcd.io/component: << inputs.component >>
+          << if get inputs "podSecurityLevel" >>pod-security.kubernetes.io/enforce: << get inputs "podSecurityLevel" >><< end >>
 
     # Create OCIRepository source for each component
     - apiVersion: source.toolkit.fluxcd.io/v1beta2
