@@ -97,6 +97,11 @@ spec:
         path: ./configs/<< inputs.environment >>
         prune: true
         interval: 10m
+        postBuild:
+          substituteFrom:
+            - kind: Secret
+              name: << inputs.component >>
+              optional: true
         dependsOn:
           - name: << inputs.component >>-controllers
           - name: onepassword-controllers
