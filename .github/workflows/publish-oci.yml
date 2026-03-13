@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
       - name: Setup Flux CLI
-        uses: controlplaneio-fluxcd/distribution/actions/setup@f2b659f0cec358552f981171c5f98e4972183b0c # v2.7.5
+        uses: controlplaneio-fluxcd/distribution/actions/setup@d7408b3a1db55553dd3432293bdd9d36bad0e855 # v2.8.2
 
       - name: Setup cosign
         uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
@@ -46,7 +46,7 @@ jobs:
 
       - name: Push OCI artifact
         if: github.event_name != 'pull_request'
-        uses: controlplaneio-fluxcd/distribution/actions/push@f2b659f0cec358552f981171c5f98e4972183b0c # v2.7.5
+        uses: controlplaneio-fluxcd/distribution/actions/push@d7408b3a1db55553dd3432293bdd9d36bad0e855 # v2.8.2
         id: push
         with:
           repository: ghcr.io/bendwyer/d2-fleet
