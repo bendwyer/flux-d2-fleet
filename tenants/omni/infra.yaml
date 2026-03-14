@@ -23,6 +23,10 @@ spec:
       tag: "latest"
       environment: "omni"
       podSecurityLevel: "privileged"
+    - component: "opentelemetry-collector"
+      tag: "latest"
+      environment: "omni"
+      podSecurityLevel: "privileged"      
 
   resources:
     # Create namespace for each component
