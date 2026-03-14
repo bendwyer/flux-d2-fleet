@@ -16,6 +16,13 @@ spec:
     - component: "cert-manager"
       tag: "latest"
       environment: "omni"
+    - component: "kube-state-metrics"
+      tag: "latest"
+      environment: "omni"
+    - component: "node-exporter"
+      tag: "latest"
+      environment: "omni"
+      podSecurityLevel: "privileged"
 
   resources:
     # Create namespace for each component
