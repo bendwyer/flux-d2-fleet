@@ -36,6 +36,9 @@ spec:
     - component: "books"
       tag: "latest"
       environment: "home"
+    - component: "homepage"
+      tag: "latest"
+      environment: "home"
 
   resources:
     # Create namespace (app can add labels via its manifests)
