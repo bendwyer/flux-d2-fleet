@@ -29,7 +29,6 @@ spec:
     - component: "goldilocks-webui"
       tag: "latest"
       environment: "omni"
-      createNamespace: "disabled"
 
   resources:
     # Create namespace (app can add labels via its manifests)
