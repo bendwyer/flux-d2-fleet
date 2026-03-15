@@ -22,8 +22,11 @@ spec:
       ready: true
       readyExpr: status.observedGeneration >= 0
   inputs:
-    # add apps below
+    # add applications below
     - component: "omni"
+      tag: "latest"
+      environment: "omni"
+    - component: "flux-webui"
       tag: "latest"
       environment: "omni"
     - component: "goldilocks-webui"
