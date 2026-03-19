@@ -1,0 +1,42 @@
+---
+apiVersion: fluxcd.controlplane.io/v1
+kind: ResourceSet
+metadata:
+  name: versions
+  namespace: flux-system
+spec:
+  inputs:
+    - goldilocks_image:
+        tag: "v4.14.9"
+        digest: ""
+      homepage_image:
+        tag: "v1.11.0"
+        digest: "sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1"
+      omni_image:
+        tag: "v1.4.7"
+        digest: ""
+  resources:
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: goldilocks
+      data:
+        GOLDILOCKS_IMAGE_TAG: "<< inputs.goldilocks_image.tag >>"
+        GOLDILOCKS_IMAGE_DIGEST: "<< inputs.goldilocks_image.digest >>"
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: homepage
+      data:
+        HOMEPAGE_IMAGE_TAG: "<< inputs.homepage_image.tag >>"
+        HOMEPAGE_IMAGE_DIGEST: "<< inputs.homepage_image.digest >>"
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: omni
+      data:
+        OMNI_IMAGE_TAG: "<< inputs.omni_image.tag >>"
+        OMNI_IMAGE_DIGEST: "<< inputs.omni_image.digest >>"
