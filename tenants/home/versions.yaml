@@ -1,0 +1,88 @@
+---
+apiVersion: fluxcd.controlplane.io/v1
+kind: ResourceSet
+metadata:
+  name: versions
+  namespace: flux-system
+spec:
+  inputs:
+    - goldilocks_image:
+        tag: "v4.14.9"
+        digest: ""
+      tsidp_image:
+        tag: "v0.0.9"
+        digest: ""
+      homepage_image:
+        tag: "v1.11.0"
+        digest: "sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1"
+      kavita_image:
+        tag: "0.8.9"
+        digest: "sha256:ab8d4b81d59ae5c4410bcc1102a7378c72d6cb17a26f350f5fa678b6e376dd3a"
+      filebrowser_image:
+        tag: "v2.56.0"
+        digest: ""
+      comictagger_image:
+        tag: "1.6.0b9"
+        digest: "sha256:dfb3a48a21ce90c2f1708c7192e0d5e07502b56cd0b4333817394aab4c725b32"
+      humble_cli_image:
+        tag: "0.21.3"
+        digest: "sha256:0a5b50588235710f77f7055bd40d1184edd3e7395a3dc5cfabcc8b28287c19a9"
+      kobodl_image:
+        tag: "0.13.0"
+        digest: "sha256:5439b54edcd16211dd6b1567f1b3a976f21770851be29cf0269de8d52b93717b"
+      epub2cbz_image:
+        tag: "1.0.2"
+        digest: "sha256:323d4a7c17a6814ba01d4ec7698b05762bb6366f4f58fa49e4052f05ce85136f"
+      kcc_image:
+        tag: "v9.4.3"
+        digest: ""
+      ebook_metadata_image:
+        tag: "1.0.3"
+        digest: ""
+  resources:
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: goldilocks
+      data:
+        GOLDILOCKS_IMAGE_TAG: "<< inputs.goldilocks_image.tag >>"
+        GOLDILOCKS_IMAGE_DIGEST: "<< inputs.goldilocks_image.digest >>"
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: tsidp
+      data:
+        TSIDP_IMAGE_TAG: "<< inputs.tsidp_image.tag >>"
+        TSIDP_IMAGE_DIGEST: "<< inputs.tsidp_image.digest >>"
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: homepage
+      data:
+        HOMEPAGE_IMAGE_TAG: "<< inputs.homepage_image.tag >>"
+        HOMEPAGE_IMAGE_DIGEST: "<< inputs.homepage_image.digest >>"
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: image-versions
+        namespace: books
+      data:
+        KAVITA_IMAGE_TAG: "<< inputs.kavita_image.tag >>"
+        KAVITA_IMAGE_DIGEST: "<< inputs.kavita_image.digest >>"
+        FILEBROWSER_IMAGE_TAG: "<< inputs.filebrowser_image.tag >>"
+        FILEBROWSER_IMAGE_DIGEST: "<< inputs.filebrowser_image.digest >>"
+        COMICTAGGER_IMAGE_TAG: "<< inputs.comictagger_image.tag >>"
+        COMICTAGGER_IMAGE_DIGEST: "<< inputs.comictagger_image.digest >>"
+        HUMBLE_CLI_IMAGE_TAG: "<< inputs.humble_cli_image.tag >>"
+        HUMBLE_CLI_IMAGE_DIGEST: "<< inputs.humble_cli_image.digest >>"
+        KOBODL_IMAGE_TAG: "<< inputs.kobodl_image.tag >>"
+        KOBODL_IMAGE_DIGEST: "<< inputs.kobodl_image.digest >>"
+        EPUB2CBZ_IMAGE_TAG: "<< inputs.epub2cbz_image.tag >>"
+        EPUB2CBZ_IMAGE_DIGEST: "<< inputs.epub2cbz_image.digest >>"
+        KCC_IMAGE_TAG: "<< inputs.kcc_image.tag >>"
+        KCC_IMAGE_DIGEST: "<< inputs.kcc_image.digest >>"
+        EBOOK_METADATA_IMAGE_TAG: "<< inputs.ebook_metadata_image.tag >>"
+        EBOOK_METADATA_IMAGE_DIGEST: "<< inputs.ebook_metadata_image.digest >>"
