@@ -19,5 +19,7 @@ on:
 jobs:
   publish:
     uses: bendwyer/github-workflows/.github/workflows/flux-publish-oci.yml@main
+    with:
+      oci_repo: ghcr.io/bendwyer/d2-fleet
     secrets:
       ghcr_token: ${{ secrets.GITHUB_TOKEN }}
