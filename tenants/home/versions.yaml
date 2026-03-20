@@ -29,7 +29,7 @@ spec:
         digest: "@sha256:d4ebf38ed3699e6812f9152304f1b48a4d5ac5a6948bd0dddc9045216afe303f"
       kobodl_image:
         tag: 0.13.0
-        digest: "sha256:5439b54edcd16211dd6b1567f1b3a976f21770851be29cf0269de8d52b93717b"
+        digest: "@sha256:2a2ce51556e7886250ecb48ee14f793169a39b7717dc132cb08c444977d03800"
       epub2cbz_image:
         tag: 1.0.2
         digest: "@sha256:e35985dd65dd90bc38997e528e0d5223027f38a170d509eaeb194ea832d8cca7"
