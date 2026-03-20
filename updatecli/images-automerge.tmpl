@@ -56,6 +56,8 @@ targets:
     kind: yaml
     scmid: fleet
     sourceid: {{ $img.name }}-digest
+    transformers:
+      - trimprefix: "@"
     spec:
       file: tenants/{{ .name }}/versions.yaml
       key: "$.spec.inputs[0].{{ .key }}.digest"
@@ -70,6 +72,6 @@ actions:
     title: 'chore(deps): update container images'
     spec:
       automerge: true
+      mergemethod: squash
       labels:
         - dependencies
-        - automerge
