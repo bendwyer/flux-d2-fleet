@@ -1,5 +1,5 @@
 ---
-name: updatecli
+name: updatecli-images
 
 on:
   schedule:
