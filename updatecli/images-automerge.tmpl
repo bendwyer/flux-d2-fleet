@@ -40,6 +40,7 @@ targets:
   {{- $img := . }}
   {{- range .tenants }}
   {{ .name }}-{{ $img.name }}-tag:
+    name: "Update {{ $img.name }} tag in {{ .name }} versions"
     kind: yaml
     scmid: fleet
     sourceid: {{ $img.name }}-tag
@@ -48,6 +49,7 @@ targets:
       key: "$.spec.inputs[0].{{ .key }}.tag"
   {{- if $img.needs_digest }}
   {{ .name }}-{{ $img.name }}-digest:
+    name: "Update {{ $img.name }} digest in {{ .name }} versions"
     kind: yaml
     scmid: fleet
     sourceid: {{ $img.name }}-digest
