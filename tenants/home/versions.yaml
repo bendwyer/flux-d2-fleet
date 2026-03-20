@@ -7,7 +7,7 @@ metadata:
 spec:
   inputs:
     - goldilocks_image:
-        tag: "v4.14.9"
+        tag: v4.14.18
         digest: ""
       tsidp_image:
         tag: v0.0.12
