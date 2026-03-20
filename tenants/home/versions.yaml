@@ -28,7 +28,7 @@ spec:
         tag: 0.21.3
         digest: "sha256:0a5b50588235710f77f7055bd40d1184edd3e7395a3dc5cfabcc8b28287c19a9"
       kobodl_image:
-        tag: "0.13.0"
+        tag: 0.13.0
         digest: "sha256:5439b54edcd16211dd6b1567f1b3a976f21770851be29cf0269de8d52b93717b"
       epub2cbz_image:
         tag: 1.0.2
