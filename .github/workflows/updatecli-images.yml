@@ -1,0 +1,17 @@
+---
+name: updatecli
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  updatecli:
+    uses: bendwyer/github-workflows/.github/workflows/updatecli.yml@main
+    with:
+      automerge_config: updatecli/images-automerge.tmpl
+      breaking_config: updatecli/images-breaking.tmpl
+      values: updatecli/values.yml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
