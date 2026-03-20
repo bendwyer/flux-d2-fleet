@@ -10,7 +10,7 @@ spec:
         tag: "v4.14.9"
         digest: ""
       tsidp_image:
-        tag: "v0.0.9"
+        tag: v0.0.12
         digest: ""
       homepage_image:
         tag: "v1.11.0"
