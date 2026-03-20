@@ -1,20 +1,21 @@
+{{- range .images }}
 ---
-name: "Detect breaking container image versions"
+name: "Detect breaking {{ .name }} version"
+pipelineid: "breaking-images"
 
 scms:
   fleet:
     kind: github
     spec:
-      owner: {{ .github.owner }}
-      repository: {{ .github.repository }}
+      owner: {{ $.github.owner }}
+      repository: {{ $.github.repository }}
       branch: main
       user: updatecli-bot
       email: updatecli@users.noreply.github.com
       token: '{{ requiredEnv "GITHUB_TOKEN" }}'
 
 sources:
-  {{- range .images }}
-  {{ .name }}-tag:
+  tag:
     kind: dockerimage
     spec:
       image: {{ .image }}
@@ -24,47 +25,26 @@ sources:
       versionfilter:
         kind: semver
         pattern: "{{ .breaking }}"
-  {{- if .needs_digest }}
-  {{ .name }}-digest:
-    kind: dockerdigest
-    spec:
-      image: {{ .image }}
-      tag: '{{"{{"}} source "{{ .name }}-tag" {{"}}"}}'
-    dependson:
-      - {{ .name }}-tag
-  {{- end }}
-  {{- end }}
 
 targets:
-  {{- range .images }}
-  {{- $img := . }}
   {{- range .tenants }}
-  {{ .name }}-{{ $img.name }}-tag:
+  {{ .name }}-tag:
     kind: yaml
     scmid: fleet
-    sourceid: {{ $img.name }}-tag
+    sourceid: tag
     spec:
       file: tenants/{{ .name }}/versions.yaml
       key: "$.spec.inputs[0].{{ .key }}.tag"
-  {{- if $img.needs_digest }}
-  {{ .name }}-{{ $img.name }}-digest:
-    kind: yaml
-    scmid: fleet
-    sourceid: {{ $img.name }}-digest
-    spec:
-      file: tenants/{{ .name }}/versions.yaml
-      key: "$.spec.inputs[0].{{ .key }}.digest"
-  {{- end }}
-  {{- end }}
   {{- end }}
 
 actions:
   default:
     kind: github/pullrequest
     scmid: fleet
-    title: 'chore(deps): breaking version update available'
+    title: 'chore(deps): breaking {{ .name }} version update available'
     spec:
       automerge: false
       labels:
         - dependencies
         - breaking-change
+{{- end }}
