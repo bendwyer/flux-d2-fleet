@@ -6,7 +6,7 @@ github:
 images:
   # >=1.x — auto-merge patch+minor, manual PR for major
   - name: goldilocks
-    image: docker.io/fairwinds/goldilocks
+    image: us-docker.pkg.dev/fairwinds-ops/oss/goldilocks
     tagfilter: '^v\d+\.\d+\.\d+$'
     safe: ">=4.14.0 <5.0.0"
     breaking: ">=5.0.0"
