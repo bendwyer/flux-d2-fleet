@@ -1,7 +1,7 @@
 ---
 github:
   owner: bendwyer
-  repository: d2-fleet
+  repository: flux-d2-fleet
 
 images:
   # >=1.x — auto-merge patch+minor, manual PR for major
