@@ -29,6 +29,7 @@ sources:
 targets:
   {{- range .tenants }}
   {{ .name }}-tag:
+    name: "Update {{ .key }} tag in {{ .name }} versions"
     kind: yaml
     scmid: fleet
     sourceid: tag
