@@ -10,6 +10,7 @@ scms:
       branch: main
       user: updatecli-bot
       email: updatecli@users.noreply.github.com
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
       token: '{{ requiredEnv "GITHUB_TOKEN" }}'
       commitusingapi: true
 
