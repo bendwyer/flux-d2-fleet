@@ -11,6 +11,7 @@ scms:
       user: updatecli-bot
       email: updatecli@users.noreply.github.com
       token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      commitusingapi: true
 
 sources:
   {{- range .images }}
@@ -30,6 +31,7 @@ sources:
     spec:
       image: {{ .image }}
       tag: '{{"{{"}} source "{{ .name }}-tag" {{"}}"}}'
+      hidetag: true
     dependson:
       - {{ .name }}-tag
   {{- end }}
