@@ -25,7 +25,7 @@ spec:
         tag: "1.6"
         digest: sha256:c2460eb03f3dadec0e102c8ecc3babc4832259ce6bb4bd54aaeb45ac1c5b3239
       humble_cli_image:
-        tag: 0.21.3
+        tag: 0.22.0
         digest: sha256:d4ebf38ed3699e6812f9152304f1b48a4d5ac5a6948bd0dddc9045216afe303f
       kobodl_image:
         tag: 0.13.0
