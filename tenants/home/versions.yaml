@@ -16,7 +16,7 @@ spec:
         tag: "v1.11.0"
         digest: "sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1"
       kavita_image:
-        tag: "0.8.9"
+        tag: 0.8.9
         digest: "sha256:ab8d4b81d59ae5c4410bcc1102a7378c72d6cb17a26f350f5fa678b6e376dd3a"
       filebrowser_image:
         tag: v2.62.1
