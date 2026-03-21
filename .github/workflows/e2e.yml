@@ -15,3 +15,11 @@ jobs:
     uses: bendwyer/github-workflows/.github/workflows/flux-e2e.yml@main
     with:
       tenants: '["omni", "home"]'
+
+  check:
+    if: always()
+    needs:
+      - test
+    uses: bendwyer/github-workflows/.github/workflows/github-check.yml@main
+    with:
+      jobs: ${{ toJSON(needs) }}

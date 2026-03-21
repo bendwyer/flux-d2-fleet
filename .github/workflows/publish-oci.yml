@@ -23,3 +23,11 @@ jobs:
       oci_repo: ghcr.io/bendwyer/d2-fleet
     secrets:
       ghcr_token: ${{ secrets.GITHUB_TOKEN }}
+
+  check:
+    if: always()
+    needs:
+      - publish
+    uses: bendwyer/github-workflows/.github/workflows/github-check.yml@main
+    with:
+      jobs: ${{ toJSON(needs) }}
