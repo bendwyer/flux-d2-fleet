@@ -25,7 +25,7 @@ spec:
         tag: "1.6.0b9"
         digest: "sha256:dfb3a48a21ce90c2f1708c7192e0d5e07502b56cd0b4333817394aab4c725b32"
       humble_cli_image:
-        tag: "0.21.3"
+        tag: 0.21.3
         digest: "sha256:0a5b50588235710f77f7055bd40d1184edd3e7395a3dc5cfabcc8b28287c19a9"
       kobodl_image:
         tag: "0.13.0"
