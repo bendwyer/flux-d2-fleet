@@ -90,12 +90,6 @@ spec:
         prune: true
         wait: true
         interval: 10m
-        postBuild:
-          substituteFrom:
-            - kind: ConfigMap
-              name: image-versions
-              optional: true
-
     # Apply configs (ClusterIssuers, Certificates, etc.)
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
