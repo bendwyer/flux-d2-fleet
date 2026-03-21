@@ -13,5 +13,6 @@ jobs:
       automerge_config: updatecli/images-automerge.tmpl
       breaking_config: updatecli/images-breaking.tmpl
       values: updatecli/values.yml
+      gh_app_id: ${{ vars.GH_APP_ID }}
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      gh_app_private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
