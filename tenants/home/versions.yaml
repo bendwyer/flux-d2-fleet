@@ -32,7 +32,7 @@ spec:
         digest: sha256:2a2ce51556e7886250ecb48ee14f793169a39b7717dc132cb08c444977d03800
       epub2cbz_image:
         tag: 1.0.2
-        digest: "sha256:323d4a7c17a6814ba01d4ec7698b05762bb6366f4f58fa49e4052f05ce85136f"
+        digest: sha256:e35985dd65dd90bc38997e528e0d5223027f38a170d509eaeb194ea832d8cca7
       kcc_image:
         tag: v9.6.2
         digest: ""
