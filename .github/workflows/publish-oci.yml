@@ -24,7 +24,7 @@ jobs:
     secrets:
       ghcr_token: ${{ secrets.GITHUB_TOKEN }}
 
-  check:
+  publish_check:
     if: always()
     needs:
       - publish

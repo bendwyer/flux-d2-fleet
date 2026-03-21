@@ -16,7 +16,7 @@ jobs:
     with:
       tenants: '["omni", "home"]'
 
-  check:
+  e2e_check:
     if: always()
     needs:
       - test
