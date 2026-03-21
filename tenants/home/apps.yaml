@@ -77,9 +77,6 @@ spec:
         retryInterval: 1m  # Retry faster when OnePasswordItems are being created
         postBuild:
           substituteFrom:
-            - kind: ConfigMap
-              name: image-versions
-              optional: true
             - kind: Secret
               name: << inputs.component >>
               optional: true  # First run: creates OnePasswordItem, second run: uses secret
