@@ -19,7 +19,7 @@ spec:
         tag: 0.8.9
         digest: "sha256:ab8d4b81d59ae5c4410bcc1102a7378c72d6cb17a26f350f5fa678b6e376dd3a"
       filebrowser_image:
-        tag: "v2.56.0"
+        tag: v2.62.1
         digest: ""
       comictagger_image:
         tag: "1.6.0b9"
