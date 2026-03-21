@@ -23,7 +23,7 @@ spec:
         digest: ""
       comictagger_image:
         tag: "1.6"
-        digest: "sha256:dfb3a48a21ce90c2f1708c7192e0d5e07502b56cd0b4333817394aab4c725b32"
+        digest: sha256:c2460eb03f3dadec0e102c8ecc3babc4832259ce6bb4bd54aaeb45ac1c5b3239
       humble_cli_image:
         tag: 0.21.3
         digest: sha256:d4ebf38ed3699e6812f9152304f1b48a4d5ac5a6948bd0dddc9045216afe303f
