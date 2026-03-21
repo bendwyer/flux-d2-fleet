@@ -34,7 +34,7 @@ spec:
         tag: 1.0.2
         digest: "sha256:323d4a7c17a6814ba01d4ec7698b05762bb6366f4f58fa49e4052f05ce85136f"
       kcc_image:
-        tag: "v9.4.3"
+        tag: v9.6.2
         digest: ""
       ebook_metadata_image:
         tag: 1.0.3
