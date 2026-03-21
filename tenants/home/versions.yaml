@@ -7,37 +7,37 @@ metadata:
 spec:
   inputs:
     - goldilocks_image:
-        tag: "v4.14.9"
+        tag: v4.14.18
         digest: ""
       tsidp_image:
-        tag: "v0.0.9"
+        tag: v0.0.12
         digest: ""
       homepage_image:
-        tag: "v1.11.0"
-        digest: "sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1"
+        tag: v1.11.0
+        digest: sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1
       kavita_image:
-        tag: "0.8.9"
-        digest: "sha256:ab8d4b81d59ae5c4410bcc1102a7378c72d6cb17a26f350f5fa678b6e376dd3a"
+        tag: 0.8.9
+        digest: sha256:52b11e05b430ce6c6e711c29ee0fc867f46c6bad64ed8d1c1c9e64322e7c362b
       filebrowser_image:
-        tag: "v2.56.0"
+        tag: v2.62.1
         digest: ""
       comictagger_image:
-        tag: "1.6.0b9"
-        digest: "sha256:dfb3a48a21ce90c2f1708c7192e0d5e07502b56cd0b4333817394aab4c725b32"
+        tag: "1.6"
+        digest: sha256:c2460eb03f3dadec0e102c8ecc3babc4832259ce6bb4bd54aaeb45ac1c5b3239
       humble_cli_image:
-        tag: "0.21.3"
-        digest: "sha256:0a5b50588235710f77f7055bd40d1184edd3e7395a3dc5cfabcc8b28287c19a9"
+        tag: 0.21.3
+        digest: sha256:d4ebf38ed3699e6812f9152304f1b48a4d5ac5a6948bd0dddc9045216afe303f
       kobodl_image:
-        tag: "0.13.0"
-        digest: "sha256:5439b54edcd16211dd6b1567f1b3a976f21770851be29cf0269de8d52b93717b"
+        tag: 0.13.0
+        digest: sha256:2a2ce51556e7886250ecb48ee14f793169a39b7717dc132cb08c444977d03800
       epub2cbz_image:
-        tag: "1.0.2"
-        digest: "sha256:323d4a7c17a6814ba01d4ec7698b05762bb6366f4f58fa49e4052f05ce85136f"
+        tag: 1.0.2
+        digest: sha256:e35985dd65dd90bc38997e528e0d5223027f38a170d509eaeb194ea832d8cca7
       kcc_image:
-        tag: "v9.4.3"
+        tag: v9.6.2
         digest: ""
       ebook_metadata_image:
-        tag: "1.0.3"
+        tag: 1.0.3
         digest: ""
   resources:
     - apiVersion: v1
