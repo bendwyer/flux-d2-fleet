@@ -26,7 +26,7 @@ spec:
         digest: "sha256:dfb3a48a21ce90c2f1708c7192e0d5e07502b56cd0b4333817394aab4c725b32"
       humble_cli_image:
         tag: 0.21.3
-        digest: "sha256:0a5b50588235710f77f7055bd40d1184edd3e7395a3dc5cfabcc8b28287c19a9"
+        digest: sha256:d4ebf38ed3699e6812f9152304f1b48a4d5ac5a6948bd0dddc9045216afe303f
       kobodl_image:
         tag: 0.13.0
         digest: "sha256:5439b54edcd16211dd6b1567f1b3a976f21770851be29cf0269de8d52b93717b"
