@@ -10,7 +10,7 @@ spec:
         tag: v4.14.18
         digest: ""
       homepage_image:
-        tag: "v1.11.0"
+        tag: v1.11.0
         digest: "sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1"
       omni_image:
         tag: v1.6.1
