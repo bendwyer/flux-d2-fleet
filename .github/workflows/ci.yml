@@ -1,0 +1,38 @@
+---
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  changes:
+    uses: bendwyer/github-workflows/.github/workflows/github-detect-changes.yml@main
+
+  e2e:
+    needs: changes
+    if: needs.changes.outputs.changes != '[]'
+    uses: bendwyer/github-workflows/.github/workflows/flux-e2e.yml@main
+    with:
+      tenants: '["omni", "home"]'
+
+  publish:
+    needs: changes
+    if: needs.changes.outputs.changes != '[]'
+    uses: bendwyer/github-workflows/.github/workflows/flux-publish-oci.yml@main
+    with:
+      oci_repo: ghcr.io/bendwyer/d2-fleet
+    secrets:
+      ghcr_token: ${{ secrets.GITHUB_TOKEN }}
+
+  check:
+    if: always()
+    needs:
+      - changes
+      - e2e
+      - publish
+    uses: bendwyer/github-workflows/.github/workflows/github-check.yml@main
+    with:
+      allowed_skips: e2e,publish
+      jobs: ${{ toJSON(needs) }}
