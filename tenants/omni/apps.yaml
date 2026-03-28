@@ -46,7 +46,7 @@ spec:
           fluxcd.controlplane.io/reconcile: << get inputs "createNamespace" | default "enabled" >>
 
     # Create OCIRepository source for each application
-    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+    - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
       metadata:
         name: apps
