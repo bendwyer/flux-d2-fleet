@@ -10,6 +10,12 @@ metadata:
 spec:
   inputs:
     # add infra below
+    # createConfigs: "disabled" prevents the configs Kustomization from being created,
+    # removing the unnecessary 1Password dependency for components that have no configs.
+    - component: "flux-operator"
+      tag: "latest"
+      environment: "omni"
+      createConfigs: "disabled"
     - component: "onepassword"
       tag: "latest"
       environment: "omni"
@@ -98,6 +104,8 @@ spec:
       metadata:
         name: << inputs.component >>-configs
         namespace: << inputs.component >>
+        annotations:
+          fluxcd.controlplane.io/reconcile: << get inputs "createConfigs" | default "enabled" >>
       spec:
         sourceRef:
           kind: OCIRepository
