@@ -71,7 +71,7 @@ spec:
           << if get inputs "podSecurityLevel" >>pod-security.kubernetes.io/enforce: << get inputs "podSecurityLevel" >><< end >>
 
     # Create OCIRepository source for each component
-    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+    - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
       metadata:
         name: infra
