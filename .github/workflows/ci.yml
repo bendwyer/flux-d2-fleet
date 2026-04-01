@@ -15,7 +15,7 @@ jobs:
     if: needs.changes.outputs.changes != '[]'
     uses: bendwyer/github-workflows/.github/workflows/flux-e2e.yml@main
     with:
-      tenants: '["omni", "home"]'
+      tenants: '["home"]'
 
   publish:
     needs: changes
