@@ -12,6 +12,10 @@ spec:
     # add infra below
     # createConfigs: "disabled" prevents the configs Kustomization from being created,
     # removing the unnecessary 1Password dependency for components that have no configs.
+    - component: "talos-ccm"
+      tag: "latest"
+      environment: "home"
+      createConfigs: "disabled"
     - component: "flux-operator"
       tag: "latest"
       environment: "home"
@@ -51,9 +55,6 @@ spec:
       tag: "latest"
       environment: "home"
       podSecurityLevel: "privileged"
-    - component: "kubelet-serving-cert-approver"
-      tag: "latest"
-      environment: "home"
     - component: "metrics-server"
       tag: "latest"
       environment: "home"
