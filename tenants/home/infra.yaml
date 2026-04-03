@@ -57,8 +57,8 @@ spec:
     - component: "alertmanager"
       tag: "latest"
     # o11y visualization
-    # - component: "grafana"
-    #   tag: "latest"
+    - component: "grafana"
+      tag: "latest"
     # o11y collection
     # - component: "opentelemetry-collector"
     #   tag: "latest"
