@@ -39,11 +39,27 @@ spec:
       podSecurityLevel: "privileged"
     - component: "tsidp"
       tag: "latest"
-    # - component: "victoria-metrics"
+    # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
+    # o11y sources
+    - component: "kube-state-metrics"
+      tag: "latest"
+      createConfigs: "disabled"
+    # - component: "prometheus-node-exporter"
     #   tag: "latest"
     #   podSecurityLevel: "privileged"
-    # - component: "victoria-logs"
+    #   createConfigs: "disabled"
+    # o11y backends
+    # - component: "prometheus"
     #   tag: "latest"
+    # - component: "loki"
+    #   tag: "latest"
+    # olly alerting
+    # - component: "alertmanager"
+    #   tag: "latest"
+    # o11y visualization
+    # - component: "grafana"
+    #   tag: "latest"
+    # o11y collection
     # - component: "opentelemetry-collector"
     #   tag: "latest"
     #   podSecurityLevel: "privileged"
@@ -51,6 +67,7 @@ spec:
     # - component: "opentelemetry-collector-gateway"
     #   tag: "latest"
     #   createConfigs: "disabled"
+    # o11y right-sizing
     # - component: "metrics-server"
     #   tag: "latest"
     #   createConfigs: "disabled"
