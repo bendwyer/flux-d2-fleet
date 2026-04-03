@@ -51,8 +51,8 @@ spec:
     # o11y backends
     - component: "prometheus"
       tag: "latest"
-    # - component: "loki"
-    #   tag: "latest"
+    - component: "loki"
+      tag: "latest"
     # olly alerting
     # - component: "alertmanager"
     #   tag: "latest"
