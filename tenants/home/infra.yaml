@@ -14,56 +14,52 @@ spec:
     # removing the unnecessary 1Password dependency for components that have no configs.
     - component: "talos-ccm"
       tag: "latest"
-      environment: "home"
       createConfigs: "disabled"
     - component: "flux-operator"
       tag: "latest"
-      environment: "home"
       createConfigs: "disabled"
     - component: "onepassword"
       tag: "latest"
-      environment: "home"
+      createConfigs: "disabled"
     - component: "longhorn"
       tag: "latest"
-      environment: "home"
       podSecurityLevel: "privileged"
+      createConfigs: "disabled"
     - component: "k8up"
       tag: "latest"
-      environment: "home"
       createConfigs: "disabled"
     - component: "bjw-s"
       tag: "latest"
-      environment: "home"
+      createConfigs: "disabled"
     - component: "tailscale"
       tag: "latest"
-      environment: "home"
       # PodSecurity must be set here because the ResourceSet creates the namespace
       # before the component's Kustomization runs. ProxyGroup pods require privileged
       # access and will fail to schedule if the label is only in the component's namespace.yaml.
       podSecurityLevel: "privileged"
     - component: "tsidp"
       tag: "latest"
-      environment: "home"
     # - component: "victoria-metrics"
     #   tag: "latest"
-    #   environment: "home"
     #   podSecurityLevel: "privileged"
     # - component: "victoria-logs"
     #   tag: "latest"
-    #   environment: "home"
     # - component: "opentelemetry-collector"
     #   tag: "latest"
-    #   environment: "home"
     #   podSecurityLevel: "privileged"
+    #   createConfigs: "disabled"
+    # - component: "opentelemetry-collector-gateway"
+    #   tag: "latest"
+    #   createConfigs: "disabled"
     # - component: "metrics-server"
     #   tag: "latest"
-    #   environment: "home"
+    #   createConfigs: "disabled"
     # - component: "vertical-pod-autoscaler"
     #   tag: "latest"
-    #   environment: "home"
+    #   createConfigs: "disabled"
     # - component: "goldilocks"
     #   tag: "latest"
-    #   environment: "home"
+    #   createConfigs: "disabled"
 
   resources:
     # Create namespace for each component
@@ -97,7 +93,7 @@ spec:
         sourceRef:
           kind: OCIRepository
           name: infra
-        path: ./controllers/<< inputs.environment >>
+        path: ./controllers/home
         prune: true
         wait: true
         interval: 10m
@@ -113,7 +109,7 @@ spec:
         sourceRef:
           kind: OCIRepository
           name: infra
-        path: ./configs/<< inputs.environment >>
+        path: ./configs/home
         prune: true
         interval: 10m
         postBuild:
