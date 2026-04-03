@@ -26,19 +26,14 @@ spec:
     # add applications below
     - component: "flux-webui"
       tag: "latest"
-      environment: "home"
     # - component: "goldilocks-webui"
     #   tag: "latest"
-    #   environment: "home"
     - component: "longhorn-webui"
       tag: "latest"
-      environment: "home"
     - component: "books"
       tag: "latest"
-      environment: "home"
     - component: "homepage"
       tag: "latest"
-      environment: "home"
 
   resources:
     # Create namespace (app can add labels via its manifests)
@@ -71,7 +66,7 @@ spec:
         sourceRef:
           kind: OCIRepository
           name: apps
-        path: ./<< inputs.environment >>
+        path: ./home
         prune: true
         interval: 10m
         retryInterval: 1m  # Retry faster when OnePasswordItems are being created
