@@ -54,8 +54,8 @@ spec:
     - component: "loki"
       tag: "latest"
     # olly alerting
-    # - component: "alertmanager"
-    #   tag: "latest"
+    - component: "alertmanager"
+      tag: "latest"
     # o11y visualization
     # - component: "grafana"
     #   tag: "latest"
