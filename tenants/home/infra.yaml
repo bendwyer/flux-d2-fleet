@@ -23,7 +23,6 @@ spec:
     - component: "longhorn"
       tag: "latest"
       podSecurityLevel: "privileged"
-      createConfigs: "disabled"
     - component: "k8up"
       tag: "latest"
     - component: "bjw-s"
