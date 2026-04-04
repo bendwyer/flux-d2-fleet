@@ -40,7 +40,6 @@ spec:
     # o11y sources
     - component: "kube-state-metrics"
       tag: "latest"
-      createConfigs: "disabled"
     - component: "prometheus-node-exporter"
       tag: "latest"
       podSecurityLevel: "privileged"
