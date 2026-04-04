@@ -26,7 +26,6 @@ spec:
       createConfigs: "disabled"
     - component: "k8up"
       tag: "latest"
-      createConfigs: "disabled"
     - component: "bjw-s"
       tag: "latest"
       createConfigs: "disabled"
