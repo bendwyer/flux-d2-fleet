@@ -17,7 +17,6 @@ spec:
       createConfigs: "disabled"
     - component: "flux-operator"
       tag: "latest"
-      createConfigs: "disabled"
     - component: "onepassword"
       tag: "latest"
       createConfigs: "disabled"
