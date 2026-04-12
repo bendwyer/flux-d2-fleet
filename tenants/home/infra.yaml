@@ -39,6 +39,8 @@ spec:
       podSecurityLevel: "privileged"
     - component: "tsidp"
       tag: "latest"
+    - component: "flux-mcp"
+      tag: "latest"      
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
     # o11y sources
     - component: "kube-state-metrics"
