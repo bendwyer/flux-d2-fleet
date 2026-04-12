@@ -44,6 +44,8 @@ spec:
       tag: "latest"
     - component: "flux-operator-mcp"
       tag: "latest"
+    - component: "mcp-servers"
+      tag: "latest"      
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
     # o11y sources
     - component: "kube-state-metrics"
