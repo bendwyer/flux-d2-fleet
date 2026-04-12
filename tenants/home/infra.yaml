@@ -23,6 +23,9 @@ spec:
     - component: "longhorn"
       tag: "latest"
       podSecurityLevel: "privileged"
+    - component: "gateway-api" # required for agentgateway
+      tag: "latest"
+      createConfigs: "disabled"
     - component: "prometheus-pushgateway"
       tag: "latest"
       createConfigs: "disabled"
@@ -40,7 +43,7 @@ spec:
     - component: "tsidp"
       tag: "latest"
     - component: "flux-operator-mcp"
-      tag: "latest"      
+      tag: "latest"
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
     # o11y sources
     - component: "kube-state-metrics"
