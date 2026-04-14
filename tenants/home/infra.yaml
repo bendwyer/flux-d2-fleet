@@ -51,7 +51,6 @@ spec:
       tag: "latest"
     - component: "bifrost"
       tag: "latest"
-      createConfigs: "disabled"
     - component: "coder"
       tag: "latest"
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
