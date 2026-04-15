@@ -49,8 +49,6 @@ spec:
       tag: "latest"
     - component: "agentgateway"
       tag: "latest"
-    - component: "bifrost"
-      tag: "latest"
     - component: "coder"
       tag: "latest"
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
