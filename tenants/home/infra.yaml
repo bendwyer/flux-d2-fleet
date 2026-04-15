@@ -23,6 +23,8 @@ spec:
     - component: "longhorn"
       tag: "latest"
       podSecurityLevel: "privileged"
+    - component: "hcp-terraform-operator"
+      tag: "latest"
     - component: "gateway-api" # required for agentgateway
       tag: "latest"
       createConfigs: "disabled"
