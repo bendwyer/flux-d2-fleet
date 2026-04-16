@@ -45,9 +45,6 @@ spec:
       # before the component's Kustomization runs. ProxyGroup pods require privileged
       # access and will fail to schedule if the label is only in the component's namespace.yaml.
       podSecurityLevel: "privileged"
-    - component: "coredns-tailscale"
-      tag: "latest"
-      createConfigs: "disabled"
     - component: "tsidp"
       tag: "latest"
     - component: "flux-operator-mcp"
