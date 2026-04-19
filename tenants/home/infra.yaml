@@ -53,6 +53,8 @@ spec:
       tag: "latest"
     - component: "coder"
       tag: "latest"
+    - component: "argo-workflows"
+      tag: "latest"
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
     # o11y sources
     - component: "kube-state-metrics"
