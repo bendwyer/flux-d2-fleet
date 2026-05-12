@@ -39,6 +39,10 @@ spec:
     - component: "bjw-s"
       tag: "latest"
       createConfigs: "disabled"
+    - component: "metallb"
+      tag: "latest"
+      # speaker DaemonSet uses hostNetwork + NET_RAW to do ARP for L2 mode
+      podSecurityLevel: "privileged"
     - component: "tailscale"
       tag: "latest"
       # PodSecurity must be set here because the ResourceSet creates the namespace
