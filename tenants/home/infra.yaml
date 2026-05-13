@@ -85,15 +85,14 @@ spec:
     - component: "opentelemetry-collector-gateway"
       tag: "latest"
     # o11y right-sizing
-    # - component: "metrics-server"
-    #   tag: "latest"
-    #   createConfigs: "disabled"
+    - component: "metrics-server"
+      tag: "latest"
+      createConfigs: "disabled"
     # - component: "vertical-pod-autoscaler"
     #   tag: "latest"
     #   createConfigs: "disabled"
     # - component: "goldilocks"
     #   tag: "latest"
-    #   createConfigs: "disabled"
 
   resources:
     # Create namespace for each component
