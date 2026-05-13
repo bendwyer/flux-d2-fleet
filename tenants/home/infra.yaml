@@ -88,9 +88,9 @@ spec:
     - component: "metrics-server"
       tag: "latest"
       createConfigs: "disabled"
-    # - component: "vertical-pod-autoscaler"
-    #   tag: "latest"
-    #   createConfigs: "disabled"
+    - component: "vertical-pod-autoscaler"
+      tag: "latest"
+      createConfigs: "disabled"
     # - component: "goldilocks"
     #   tag: "latest"
 
