@@ -78,7 +78,7 @@ spec:
     - component: "grafana"
       tag: "latest"
     # o11y collection
-    - component: "opentelemetry-collector"
+    - component: "opentelemetry-collector-agent"
       tag: "latest"
       podSecurityLevel: "privileged"
       createConfigs: "disabled"
