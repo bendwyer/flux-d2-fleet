@@ -84,6 +84,8 @@ spec:
       createConfigs: "disabled"
     - component: "opentelemetry-collector-gateway"
       tag: "latest"
+    - component: "opentelemetry-collector-edge"
+      tag: "latest"
     # o11y right-sizing
     - component: "metrics-server"
       tag: "latest"
