@@ -86,6 +86,9 @@ spec:
       tag: "latest"
     - component: "opentelemetry-collector-edge"
       tag: "latest"
+    - component: "opentelemetry-collector-monitoring"
+      tag: "latest"
+      createConfigs: "disabled"
     # o11y right-sizing
     - component: "metrics-server"
       tag: "latest"
