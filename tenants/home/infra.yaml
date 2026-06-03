@@ -68,7 +68,6 @@ spec:
       podSecurityLevel: "privileged"
     - component: "prometheus-snmp-exporter"
       tag: "latest"
-      createConfigs: "disabled"
     # o11y backends
     - component: "prometheus"
       tag: "latest"
