@@ -57,6 +57,8 @@ spec:
       tag: "latest"
     - component: "coder"
       tag: "latest"
+    - component: "windmill"
+      tag: "latest"
     - component: "argo-workflows"
       tag: "latest"
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
