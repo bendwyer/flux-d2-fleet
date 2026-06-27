@@ -59,6 +59,7 @@ spec:
       tag: "latest"
     - component: "windmill"
       tag: "latest"
+      podSecurityLevel: "privileged" # workers run privileged (OOM killer + unshare pid)
     - component: "argo-workflows"
       tag: "latest"
     # o11y stack — deploy in order: sources → backends → alerting → visualization → collection → right-sizing
