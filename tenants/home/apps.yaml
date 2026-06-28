@@ -28,6 +28,8 @@ spec:
       tag: "latest"
     - component: "homepage"
       tag: "latest"
+    - component: "tailscale-exit-nodes"
+      tag: "latest"
 
   resources:
     # Create namespace (app can add labels via its manifests)
