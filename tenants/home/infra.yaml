@@ -57,9 +57,6 @@ spec:
       tag: "latest"
     - component: "coder"
       tag: "latest"
-    - component: "windmill"
-      tag: "latest"
-      podSecurityLevel: "privileged" # workers run privileged (OOM killer + unshare pid)
     - component: "semaphore"
       tag: "latest"
     - component: "argo-workflows"
