@@ -26,6 +26,8 @@ spec:
     # add applications below
     - component: "books"
       tag: "latest"
+    - component: "paperless-ngx"
+      tag: "latest"
     - component: "homepage"
       tag: "latest"
     - component: "tailscale-exit-nodes"
