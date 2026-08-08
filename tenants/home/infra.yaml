@@ -100,6 +100,10 @@ spec:
     - component: "alloy-operator"
       tag: "latest"
       createConfigs: "disabled"
+    # Node-local Prometheus scrapes. Needs the Alloy CRD from alloy-operator.
+    - component: "alloy-node"
+      tag: "latest"
+      createConfigs: "disabled"
     # o11y right-sizing
     - component: "metrics-server"
       tag: "latest"
