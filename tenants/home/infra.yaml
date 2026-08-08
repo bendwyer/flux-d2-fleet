@@ -104,7 +104,7 @@ spec:
       # Mounts /var/log to read pod logs, which baseline PodSecurity forbids.
       podSecurityLevel: "privileged"
       createConfigs: "disabled"
-    - component: "alloy-gateway"
+    - component: "alloy-singleton"
       tag: "latest"
       createConfigs: "disabled"
     # o11y right-sizing
