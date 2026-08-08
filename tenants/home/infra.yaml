@@ -96,10 +96,8 @@ spec:
     - component: "opentelemetry-collector-monitoring"
       tag: "latest"
       createConfigs: "disabled"
-    # Owns the Alloy CRD that the collector components consume.
     - component: "alloy-operator"
       tag: "latest"
-      createConfigs: "disabled"
     # Node-local Prometheus scrapes. Needs the Alloy CRD from alloy-operator.
     - component: "alloy-node"
       tag: "latest"
