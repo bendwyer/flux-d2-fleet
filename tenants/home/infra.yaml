@@ -101,6 +101,8 @@ spec:
     # Node-local Prometheus scrapes. Needs the Alloy CRD from alloy-operator.
     - component: "alloy-node"
       tag: "latest"
+      # Mounts /var/log to read pod logs, which baseline PodSecurity forbids.
+      podSecurityLevel: "privileged"
       createConfigs: "disabled"
     - component: "alloy-gateway"
       tag: "latest"
