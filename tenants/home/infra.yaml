@@ -96,6 +96,10 @@ spec:
     - component: "opentelemetry-collector-monitoring"
       tag: "latest"
       createConfigs: "disabled"
+    # Owns the Alloy CRD that the collector components consume.
+    - component: "alloy-operator"
+      tag: "latest"
+      createConfigs: "disabled"
     # o11y right-sizing
     - component: "metrics-server"
       tag: "latest"
