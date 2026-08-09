@@ -101,6 +101,9 @@ spec:
     - component: "alloy-singleton"
       tag: "latest"
       createConfigs: "disabled"
+    - component: "alloy-edge"
+      tag: "latest"
+      createConfigs: "disabled"
     # o11y right-sizing
     - component: "metrics-server"
       tag: "latest"
