@@ -85,11 +85,6 @@ spec:
     - component: "grafana"
       tag: "latest"
     # o11y collection
-    - component: "opentelemetry-collector-edge"
-      tag: "latest"
-    - component: "opentelemetry-collector-monitoring"
-      tag: "latest"
-      createConfigs: "disabled"
     - component: "alloy-operator"
       tag: "latest"
     # Node-local Prometheus scrapes. Needs the Alloy CRD from alloy-operator.
