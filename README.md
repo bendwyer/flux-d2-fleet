@@ -109,9 +109,14 @@ spec:
 
 Secrets are managed via **1Password Operator**:
 
-1. **Bootstrap Secrets**: Injected via Terraform at cluster creation
-   - `onepassword-credentials` (1Password Connect credentials)
+1. **Bootstrap Secrets**: Seeded by hand before Flux runs, since they are what the operator
+   needs in order to fetch everything else and so cannot come from 1Password
+   - `onepassword-connect-credentials` (1Password Connect server credentials)
    - `onepassword-token` (Operator authentication token)
+
+   Both are applied with `kubectl` from encrypted manifests kept outside this repo, because this
+   repo is public. Cluster bootstrap seeds them before installing flux-operator; afterwards a
+   separate idempotent script re-applies them, which is also how they are rotated.
 
 2. **Application Secrets**: Managed via `OnePasswordItem` CRDs in component repos
    - Created in flux-d2-infra/configs or flux-d2-apps components
