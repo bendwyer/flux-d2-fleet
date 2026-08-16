@@ -47,8 +47,9 @@ flux-d2-fleet/
          - https://github.com/controlplaneio-fluxcd/flux-operator/releases/latest/download/install.yaml
    ```
 
-2. 1Password bootstrap credentials added to Talos nodes:
-   - `onepassword-credentials` Secret (1Password Connect credentials)
+2. 1Password bootstrap secrets seeded into the cluster, before Flux runs (see Secrets
+   Management below):
+   - `onepassword-connect-credentials` Secret (1Password Connect server credentials)
    - `onepassword-token` Secret (Operator token)
 
 3. `kubectl` access to target cluster
