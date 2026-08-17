@@ -36,6 +36,11 @@ spec:
     - component: "cloudnative-pg"
       tag: "latest"
       createConfigs: "disabled"
+    # RBAC only. Omni delivers the Job itself and holds an upgrade rollout between nodes
+    # until it passes. Sits here because the check reads Longhorn and CNPG state.
+    - component: "omni-upgrade-gate"
+      tag: "latest"
+      createConfigs: "disabled"
     - component: "dragonfly-operator"
       tag: "latest"
       createConfigs: "disabled"
