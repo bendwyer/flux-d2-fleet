@@ -9,6 +9,16 @@ spec:
   distribution:
     version: "2.x"
     registry: "ghcr.io/fluxcd"
+    # Without this the operator uses the manifests baked into its own image, so
+    # Flux patch releases would only arrive when the operator itself updates.
+    artifact: "oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:latest"
+  # Whole-list replacement, so the four defaults are named alongside the addition.
+  components:
+    - source-controller
+    - kustomize-controller
+    - helm-controller
+    - notification-controller
+    - source-watcher
   cluster:
     domain: cluster.local
   sync:
