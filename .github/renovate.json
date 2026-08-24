@@ -1,0 +1,31 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "dependencyDashboard": false,
+  "prHourlyLimit": 0,
+  "labels": ["dependencies"],
+  "rebaseWhen": "behind-base-branch",
+  "separateMinorPatch": true,
+  "flux": { "enabled": false },
+  "github-actions": { "enabled": false },
+  "customManagers": [
+    {
+      "description": "Flux version on the FluxInstance. No built-in manager reads this field: the CRD takes a semver expression, not an image reference.",
+      "customType": "regex",
+      "managerFilePatterns": ["/clusters/.+/flux-system/flux-instance\\.yaml$/"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+) versioning=(?<versioning>\\S+)\\s+version:\\s+\"(?<currentValue>[^\"]+)\""
+      ],
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Flux patches land unattended. A minor moves every Flux component at once, and the operator only builds minors embedded in its own image, so it is read and merged after the flux-operator bump.",
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["fluxcd/flux2"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ]
+}
