@@ -15,6 +15,13 @@ spec:
     - component: "talos-ccm"
       tag: "latest"
       createConfigs: "disabled"
+    # NetworkPolicy and ClusterNetworkPolicy enforcement. Talos can only bundle the
+    # standard build, which has no ClusterNetworkPolicy evaluator.
+    - component: "kube-network-policies"
+      tag: "latest"
+      createConfigs: "disabled"
+      # hostNetwork and NET_ADMIN, neither of which baseline PodSecurity permits.
+      podSecurityLevel: "privileged"
     - component: "flux-operator"
       tag: "latest"
     - component: "onepassword"
