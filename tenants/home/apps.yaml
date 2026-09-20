@@ -32,6 +32,8 @@ spec:
       tag: "latest"
     - component: "tailscale-exit-nodes"
       tag: "latest"
+    - component: "valheim"
+      tag: "latest"
 
   resources:
     # Create namespace (app can add labels via its manifests)
