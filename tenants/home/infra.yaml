@@ -58,6 +58,11 @@ spec:
       tag: "latest"
       # speaker DaemonSet uses hostNetwork + NET_RAW to do ARP for L2 mode
       podSecurityLevel: "privileged"
+    # Publishes the WAN address to a Cloudflare A record, so inbound workloads can
+    # be reached by name across an address change.
+    - component: "cloudflare-ddns"
+      tag: "latest"
+      createConfigs: "disabled"
     - component: "tailscale"
       tag: "latest"
       # PodSecurity must be set here because the ResourceSet creates the namespace
