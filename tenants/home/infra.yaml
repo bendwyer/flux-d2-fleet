@@ -63,6 +63,11 @@ spec:
     - component: "cloudflare-ddns"
       tag: "latest"
       createConfigs: "disabled"
+    # Turns DNSEndpoint objects into public records. Pairs with cloudflare-ddns,
+    # which keeps the address those records point at current.
+    - component: "external-dns"
+      tag: "latest"
+      createConfigs: "disabled"
     - component: "tailscale"
       tag: "latest"
       # PodSecurity must be set here because the ResourceSet creates the namespace
