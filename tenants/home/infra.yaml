@@ -95,6 +95,10 @@ spec:
       podSecurityLevel: "privileged"
     - component: "prometheus-snmp-exporter"
       tag: "latest"
+    # Per-object Omni state: machines, clusters, upgrades and etcd backups.
+    - component: "omni-exporter"
+      tag: "latest"
+      createConfigs: "disabled"
     # o11y backends
     - component: "prometheus"
       tag: "latest"
