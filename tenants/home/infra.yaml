@@ -62,7 +62,6 @@ spec:
     # be reached by name across an address change.
     - component: "cloudflare-ddns"
       tag: "latest"
-      createConfigs: "disabled"
     # Turns DNSEndpoint objects into public records. Pairs with cloudflare-ddns,
     # which keeps the address those records point at current.
     - component: "external-dns"
