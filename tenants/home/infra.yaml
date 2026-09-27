@@ -77,6 +77,8 @@ spec:
       tag: "latest"
     - component: "flux-operator-mcp"
       tag: "latest"
+    - component: "toolhive"
+      tag: "latest"
     - component: "agentgateway"
       tag: "latest"
     - component: "coder"
