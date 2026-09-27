@@ -32,7 +32,7 @@ spec:
       podSecurityLevel: "privileged"
     - component: "hcp-terraform-operator"
       tag: "latest"
-    - component: "gateway-api" # required for agentgateway
+    - component: "gateway-api"
       tag: "latest"
       createConfigs: "disabled"
     - component: "prometheus-pushgateway"
@@ -78,8 +78,6 @@ spec:
     - component: "flux-operator-mcp"
       tag: "latest"
     - component: "toolhive"
-      tag: "latest"
-    - component: "agentgateway"
       tag: "latest"
     - component: "coder"
       tag: "latest"
