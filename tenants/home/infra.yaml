@@ -19,7 +19,6 @@ spec:
     # standard build, which has no ClusterNetworkPolicy evaluator.
     - component: "kube-network-policies"
       tag: "latest"
-      createConfigs: "disabled"
       # hostNetwork and NET_ADMIN, neither of which baseline PodSecurity permits.
       podSecurityLevel: "privileged"
     - component: "flux-operator"
